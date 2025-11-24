@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #d1d5db;
+    border-radius: 4px;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+}
+
+@theme inline {
+    --color-prime: #D85FA1;
+    --color-second: #E9CFAE;
+    --color-cream: #FDF4EE;
+    --color-rose: #F38FBF;
+    --color-gold: #C8A06A;
+    --color-text: #3D2A38;
+}
