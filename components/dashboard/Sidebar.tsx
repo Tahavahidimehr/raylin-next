@@ -46,7 +46,7 @@ export default function Sidebar() {
                                 <li key={menuLink.id} className="w-full">
                                     <Link href={menuLink.href} className={clsx(
                                         "w-full rounded text-gray-600 flex items-center gap-3 p-3 text-sm",
-                                        menuLink.href == path && "bg-violet-100"
+                                        menuLink.href == path && "bg-prime/10"
                                     )}>
                                         <Icon className="size-5 text-prime" />
                                         {menuLink.text}
@@ -57,7 +57,9 @@ export default function Sidebar() {
                     }
                 </ul>
             </div>
-            <Button className="w-full" variant="outlined">مشاهده فروشگاه</Button>
+            <Link href="/" className="w-full">
+                <Button className="w-full" variant="outlined">مشاهده فروشگاه</Button>
+            </Link>
         </aside>
     )
 }

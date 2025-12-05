@@ -1,6 +1,7 @@
 import Image from "next/image";
 import {Mail, Phone} from "lucide-react";
 import Link from "next/link";
+import Enamad from "@/components/general/Enamad";
 
 export default function Footer() {
     return (
@@ -63,88 +64,89 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                {/*<div className="w-full flex justify-between items-end">*/}
-                {/*    <div className="w-full grid grid-cols-4 gap-5">*/}
-                {/*        <div className="flex flex-col gap-5 text-text">*/}
-                {/*            <span className="font-semibold">محصولات پرطرفدار</span>*/}
-                {/*            <ul className="flex flex-col gap-3 text-sm">*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">زعفران</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">هل</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">ادویه</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">خشکبار</Link>*/}
-                {/*                </li>*/}
-                {/*            </ul>*/}
-                {/*        </div>*/}
-                {/*        <div className="flex flex-col gap-5 text-text">*/}
-                {/*            <span className="font-semibold">محصولات پرطرفدار</span>*/}
-                {/*            <ul className="flex flex-col gap-3 text-sm">*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">زعفران</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">هل</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">ادویه</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">خشکبار</Link>*/}
-                {/*                </li>*/}
-                {/*            </ul>*/}
-                {/*        </div>*/}
-                {/*        <div className="flex flex-col gap-5 text-text">*/}
-                {/*            <span className="font-semibold">لینک های پر کاربرد</span>*/}
-                {/*            <ul className="flex flex-col gap-3 text-sm">*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">زعفران</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">هل</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">ادویه</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">خشکبار</Link>*/}
-                {/*                </li>*/}
-                {/*            </ul>*/}
-                {/*        </div>*/}
-                {/*        <div className="flex flex-col gap-5 text-text">*/}
-                {/*            <span className="font-semibold">مقالات مهم</span>*/}
-                {/*            <ul className="flex flex-col gap-3 text-sm">*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">زعفران</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">هل</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">ادویه</Link>*/}
-                {/*                </li>*/}
-                {/*                <li>*/}
-                {/*                    <Link href="/">خشکبار</Link>*/}
-                {/*                </li>*/}
-                {/*            </ul>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*    <div className="flex justify-end items-end gap-5">*/}
-                {/*        <div className="w-32 h-32 rounded-md bg-gray-50 flex justify-center items-center relative">*/}
-                {/*            <Image src="/images/samandehi.png" alt="enamad" fill className="object-contain" sizes="(max-width: 768px) 100vw, 160px" />*/}
-                {/*        </div>*/}
-                {/*        <div className="w-32 h-32 rounded-md bg-gray-50 flex justify-center items-center relative">*/}
-                {/*            <Image src="/images/enamad.png" alt="enamad" fill className="object-contain" sizes="(max-width: 768px) 100vw, 160px" />*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
+                <div className="w-full flex justify-end items-end">
+                    {/*<div className="w-full grid grid-cols-4 gap-5">*/}
+                    {/*    <div className="flex flex-col gap-5 text-text">*/}
+                    {/*        <span className="font-semibold">محصولات پرطرفدار</span>*/}
+                    {/*        <ul className="flex flex-col gap-3 text-sm">*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">زعفران</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">هل</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">ادویه</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">خشکبار</Link>*/}
+                    {/*            </li>*/}
+                    {/*        </ul>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="flex flex-col gap-5 text-text">*/}
+                    {/*        <span className="font-semibold">محصولات پرطرفدار</span>*/}
+                    {/*        <ul className="flex flex-col gap-3 text-sm">*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">زعفران</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">هل</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">ادویه</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">خشکبار</Link>*/}
+                    {/*            </li>*/}
+                    {/*        </ul>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="flex flex-col gap-5 text-text">*/}
+                    {/*        <span className="font-semibold">لینک های پر کاربرد</span>*/}
+                    {/*        <ul className="flex flex-col gap-3 text-sm">*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">زعفران</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">هل</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">ادویه</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">خشکبار</Link>*/}
+                    {/*            </li>*/}
+                    {/*        </ul>*/}
+                    {/*    </div>*/}
+                    {/*    <div className="flex flex-col gap-5 text-text">*/}
+                    {/*        <span className="font-semibold">مقالات مهم</span>*/}
+                    {/*        <ul className="flex flex-col gap-3 text-sm">*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">زعفران</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">هل</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">ادویه</Link>*/}
+                    {/*            </li>*/}
+                    {/*            <li>*/}
+                    {/*                <Link href="/">خشکبار</Link>*/}
+                    {/*            </li>*/}
+                    {/*        </ul>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <div className="flex justify-end items-end gap-5">
+                        <div className="w-32 h-32 rounded-md bg-gray-50 flex justify-center items-center relative">
+                            <Image src="/images/samandehi.png" alt="enamad" fill className="object-contain" sizes="(max-width: 768px) 100vw, 160px" />
+                        </div>
+                        <div className="w-32 h-32 rounded-md bg-gray-50 flex justify-center items-center relative p-5">
+                            <Enamad />
+                        </div>
+                    </div>
+                </div>
                 <div className="w-full pt-5 border-t border-gray-200 flex justify-center items-center">
-                    <p className="text-text text-center text-sm mt-5">کلیه حقوق مادی و معنوی این وبسایت متعلق به رایلین می باشد.</p>
+                    <p className="text-text text-center text-sm mt-5">کلیه حقوق مادی و معنوی این وبسایت متعلق به رایلین
+                        می باشد.</p>
                 </div>
             </div>
         </footer>

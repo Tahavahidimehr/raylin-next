@@ -25,9 +25,9 @@ export default function ProductCard({ product }: { product: Product | null }) {
                 <div className="w-full h-60 relative rounded-md overflow-hidden">
                     {product.media?.length > 0 ? (
                         <Image
-                            src={`${process.env.NEXT_PUBLIC_API_URL}/${product.media.find(
+                            src={`${product.media.find(
                                 (item: Media) => item.is_main
-                            )?.path}`}
+                            )?.url}`}
                             alt="product image"
                             fill
                             className="rounded-md object-cover transition-all duration-500 group-hover:scale-110"

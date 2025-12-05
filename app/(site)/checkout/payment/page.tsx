@@ -1,15 +1,90 @@
 "use client"
 
 import {CreditCard, FileText, ShoppingCart, Tag, Truck} from "lucide-react";
-import Link from "next/link";
 import {Button, TextField} from "@mui/material";
 import * as React from "react";
 import {useCartStore} from "@/store/cartStore";
+import { apiClient } from "@/lib/apiClient";
+import toast from "react-hot-toast";
 
 export default function Payment() {
 
-    const { items, selectedShippingMethod } = useCartStore();
+    const {
+        items,
+        selectedShippingMethod,
+        selectedAddress,
+        orderNote,
+        discountCode
+    } = useCartStore();
 
+    const [loading, setLoading] = React.useState(false);
+
+    /* -------------------------------
+       BUILD ORDER PAYLOAD
+    --------------------------------*/
+    const buildPayload = () => ({
+        address_id: selectedAddress?.id,
+        shipping_method_id: selectedShippingMethod?.id,
+        note: orderNote || null,
+        discount_code: discountCode?.code ?? null,
+        items: items.map(i => ({
+            product_id: i.product_id,
+            variant_id: i.product_variant_id,
+            quantity: i.quantity
+        }))
+    });
+
+    /* -------------------------------
+       CREATE ORDER
+    --------------------------------*/
+    const createOrder = async () => {
+        return await apiClient(`${process.env.NEXT_PUBLIC_API_URL}/api/site/orders`, {
+            method: "POST",
+            body: buildPayload(),
+        });
+    };
+
+    /* -------------------------------
+       REQUEST PAY
+    --------------------------------*/
+    const payOrder = async (orderId: number) => {
+        return await apiClient(`${process.env.NEXT_PUBLIC_API_URL}/api/site/orders/${orderId}/pay`, {
+            method: "POST",
+        });
+    };
+
+    /* -------------------------------
+       HANDLE BUTTON CLICK
+    --------------------------------*/
+    const handleSubmit = async () => {
+        try {
+            if (!selectedAddress) return toast.error("آدرس انتخاب نشده");
+            if (!selectedShippingMethod) return toast.error("روش ارسال انتخاب نشده");
+            if (items.length === 0) return toast.error("سبد خرید خالی است");
+
+            setLoading(true);
+
+            // 1️⃣ ایجاد سفارش
+            const orderRes = await createOrder();
+            const order = orderRes.data;
+
+            // 2️⃣ درخواست پرداخت
+            const payRes = await payOrder(order.id);
+
+            // 3️⃣ ریدایرکت به زیبال
+            window.location.href = payRes.data.payment_url;
+
+        } catch (e: any) {
+            console.error(e);
+            toast.error(e.message || "خطا در ایجاد سفارش");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    /* -------------------------------
+       PRICE CALCULATIONS
+    --------------------------------*/
     const totalFinal = items.reduce((sum, i) => sum + i.unit_price * i.quantity, 0);
     const totalOriginal = items.reduce(
         (sum, i) => sum + (i.original_price ?? i.unit_price) * i.quantity,
@@ -78,14 +153,12 @@ export default function Payment() {
                             <span>{selectedShippingMethod?.price.toLocaleString()} تومان</span>
                         </div>
 
-                        {
-                            totalDiscount > 0 && (
-                                <div className="flex justify-between text-sm text-green-600">
-                                    <span>سود شما</span>
-                                    <span>{totalDiscount.toLocaleString()} تومان</span>
-                                </div>
-                            )
-                        }
+                        {totalDiscount > 0 && (
+                            <div className="flex justify-between text-sm text-green-600">
+                                <span>سود شما</span>
+                                <span>{totalDiscount.toLocaleString()} تومان</span>
+                            </div>
+                        )}
 
                         <div className="w-full flex justify-between items-center text-sm">
                             <span>مبلغ قابل پرداخت</span>
@@ -94,11 +167,18 @@ export default function Payment() {
                             } تومان</span>
                         </div>
 
-                        <Link href="/checkout/payment" className="w-full">
-                            <Button className="w-full" variant="contained">تایید و تکمیل سفارش</Button>
-                        </Link>
+                        <Button
+                            className="w-full"
+                            variant="contained"
+                            onClick={handleSubmit}
+                            disabled={loading}
+                        >
+                            {loading ? "در حال انتقال..." : "تایید و تکمیل سفارش"}
+                        </Button>
                     </div>
-                    <p className="w-full text-[13px] text-gray-600 text-center">هزینه این سفارش هنوز پرداخت نشده‌ و در صورت اتمام موجودی، کالاها از سبد حذف می‌شوند</p>
+                    <p className="w-full text-[13px] text-gray-600 text-center">
+                        هزینه این سفارش هنوز پرداخت نشده‌ و در صورت اتمام موجودی، کالاها از سبد حذف می‌شوند
+                    </p>
                 </div>
             </div>
         </div>

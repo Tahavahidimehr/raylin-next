@@ -40,8 +40,8 @@ export default async function Product({ params }: { params: Promise<{ productSlu
                             {
                                 product.media.find((item: Media) => item.is_main) ? (
                                     <Image
-                                        src={`${process.env.NEXT_PUBLIC_API_URL}/${
-                                            product.media.find((item: Media) => item.is_main)?.path
+                                        src={`${
+                                            product.media.find((item: Media) => item.is_main)?.url
                                         }`}
                                         alt="product image"
                                         fill

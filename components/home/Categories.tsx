@@ -16,7 +16,7 @@ export default function Categories({categories}: {categories: Category[] | null}
                     categories.map((category) => (
                         <Link href={`/categories/${category.slug}`} key={category.id} className="group flex flex-col justify-between items-center gap-2">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_API_URL}/${category.media?.[0].path}`}
+                                src={`${category.media?.[0].url}`}
                                 alt="category image"
                                 width={200}
                                 height={200}

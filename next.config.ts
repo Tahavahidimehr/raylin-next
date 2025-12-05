@@ -4,7 +4,7 @@ import withPWA from "next-pwa";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["shop.test"],
+    domains: ["api.raylin.ir", "shop.test"],
   },
 };
 
